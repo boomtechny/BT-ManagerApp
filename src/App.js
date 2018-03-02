@@ -5,6 +5,8 @@ import { Provider } from 'react-redux';
 import { createStore } from 'redux'; 
 import reducers from './reducers'; 
 import  { FB_APIKEY, FB_AUTHDOMAIN, FB_DATABASEURL, FB_PROJECTID, FB_STORAGEBUCKET, FB_MESSAGINGSENDERID} from '../config/constants.js';
+import LoginForm from './components/LoginForm'; 
+
 class App extends Component{
   componentWillMount(){
   var app = firebase.initializeApp({
@@ -16,13 +18,10 @@ class App extends Component{
     messagingSenderId: FB_MESSAGINGSENDERID
   });
   }
+
   render(){
-    return(  <Provider store = {createStore(reducers)}>
-    <View>
-      <Text>
-        Hello!
-        </Text>
-        </View>
+    return (  <Provider store = {createStore(reducers)}>
+    <LoginForm></LoginForm>
         </Provider> 
     ); 
   }
