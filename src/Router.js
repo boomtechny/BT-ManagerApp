@@ -13,7 +13,7 @@ const RouterComponent = () => {
       </Scene>
      
       <Scene key = "main" sceneStyle={{paddingTop: 65}} type={ActionConst.RESET}>
-      <Scene key = "employeeList" component={EmployeeList} title = "Employees" type={ActionConst.RESET}/> 
+      <Scene onRight = {() => console.log('right!!')} rightTitle="Add" key = "employeeList" component={EmployeeList} title = "Employees" type={ActionConst.RESET}/> 
       </Scene>
       </Scene>
       </Router>
