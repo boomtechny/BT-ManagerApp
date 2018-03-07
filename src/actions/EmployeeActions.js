@@ -1,5 +1,5 @@
 import firebase from 'firebase'; 
-import { EMPLOYEE_UPDATE , EMPLOYEE_CREATE, EMPLOYEES_FETCH_SUCCESS, EMPLOYEE_SAVE_SUCCESS} from './types'; 
+import { EMPLOYEE_UPDATE , EMPLOYEE_CREATE, EMPLOYEES_FETCH_SUCCESS, EMPLOYEE_SAVE_SUCCESS, EMPLOYEE_DELETE_SUCCESS} from './types'; 
 import { Actions, ActionConst } from 'react-native-router-flux';
 
 
@@ -46,3 +46,15 @@ return(dispatch)=>{
 };
 
 }; 
+
+export const employeeDelete = ({uid}) => {
+const { currentUser } = firebase.auth(); 
+return(dispatch)=>{
+firebase.database().ref(`/users/${currentUser.uid}/employees/${uid}`)
+.remove()
+.then(()=>{
+  dispatch({type:EMPLOYEE_DELETE_SUCCESS})
+  Actions.main({type: ActionConst.RESET})
+});
+};
+};
