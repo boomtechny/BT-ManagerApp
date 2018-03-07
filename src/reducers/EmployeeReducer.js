@@ -7,6 +7,7 @@ export default (state = INITIAL_STATE, action)=>{
     case EMPLOYEES_FETCH_SUCCESS:
     return action.payload; 
       return state; 
+
       default:
       return state; 
   }
